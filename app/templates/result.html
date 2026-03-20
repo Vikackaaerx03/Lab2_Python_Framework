@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результат перевірки</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">PASSWORD LAB</div>
+        <div class="nav-links">Victoriia Roslav | KN-732 | NTU "KhPI" | Lab work №1</div>
+    </nav>
+    
+    <main class="hero">
+        <div class="result-box">
+            <h2>Результат перевірки</h2>
+            
+            <div class="password-display">
+                <p class="info-text">Введений пароль:</p>
+                <strong class="length-number">{{ password }}</strong>
+            </div>
+
+            <p class="length-info">
+                Довжина: <strong class="length-number">{{ password_length }}</strong> символів
+            </p>
+            
+            <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 25px 0;">
+
+            {% if is_secure %}
+                <p class="success-text">ПАРОЛЬ ПОВНІСТЮ НАДІЙНИЙ!</p>
+                <p class="info-text">Він відповідає всім сучасним стандартам безпеки.</p>
+            {% else %}
+                <p class="error-text">ПАРОЛЬ СЛАБКИЙ</p>
+                
+                <div class="tips-container">
+                    <p class="tips-title">Для покращення необхідно:</p>
+                    <ul class="tips-list">
+                        {% for tip in tips %}
+                            <li>{{ tip }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            
+            <div class="action-area">
+                <a href="/"><button class="ghost-btn">← СПРОБУВАТИ ЩЕ РАЗ</button></a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

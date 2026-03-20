@@ -1,0 +1,60 @@
+/* 1. Глобальні налаштування */
+body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0b131a url('/static/photo_1.jpg') center/cover no-repeat;
+    color: #ffffff;
+    height: 100vh;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+}
+
+/* 2. Навігація */
+.top-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px); border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.logo { font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.nav-links { color: #cfd8dc; font-size: 14px; }
+
+/* 3. Головний контент */
+.hero {
+    flex-grow: 1; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center; padding: 0 20px;
+}
+.main-title { font-size: 5rem; font-weight: 800; text-transform: uppercase; margin: 0; text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); }
+.subtitle { font-size: 1.2rem; letter-spacing: 2px; margin: 20px 0 40px; color: #cfd8dc; text-transform: uppercase; }
+
+/* 4. Форми та поля */
+.check-form { display: flex; flex-direction: column; gap: 20px; }
+input[type="password"], .result-box {
+    background: rgba(0, 0, 0, 0.6); border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px; backdrop-filter: blur(10px); transition: 0.3s ease;
+}
+input[type="password"] { padding: 15px 25px; font-size: 1.2rem; color: white; width: 300px; text-align: center; outline: none; }
+input[type="password"]:focus { border-color: #ffffff; background: rgba(0, 0, 0, 0.8); }
+
+/* 5. Кнопка */
+.ghost-btn {
+    background: transparent; color: #ffffff; border: 2px solid #ffffff;
+    border-radius: 30px; padding: 15px 40px; font-weight: bold;
+    letter-spacing: 1px; cursor: pointer; text-transform: uppercase; transition: 0.3s ease;
+}
+.ghost-btn:hover { background: #ffffff; color: #0b131a; transform: translateY(-2px); }
+
+/* 6. Сторінка результату (Додані відсутні класи) */
+.result-box { padding: 40px; min-width: 350px; text-align: center; }
+.length-info { font-size: 1.2rem; margin-bottom: 20px; }
+.length-number { font-size: 1.8rem; color: #fff; }
+.success-text { color: #4caf50; font-weight: bold; font-size: 1.3rem; margin: 15px 0; }
+.error-text { color: #f44336; font-weight: bold; font-size: 1.3rem; margin: 15px 0; }
+.info-text { color: #b0bec5; font-size: 0.9rem; }
+
+.tips-container {
+    text-align: left; background: rgba(255, 255, 255, 0.05);
+    padding: 15px; border-radius: 12px; margin-top: 20px; border: 1px solid rgba(255,255,255,0.1);
+}
+.tips-title { font-size: 0.9rem; color: #90a4ae; margin-bottom: 10px; font-weight: bold; }
+.tips-list { color: #ffffff; padding-left: 20px; line-height: 1.6; }
+.action-area { margin-top: 30px; }

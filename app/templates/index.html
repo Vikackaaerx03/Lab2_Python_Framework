@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевірка пароля</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">PASSWORD LAB</div>
+        <div class="nav-links">Victoriia Roslav | KN-732 | NTU "KhPI" | Lab work №1</div>
+    </nav>
+    
+    <main class="hero">
+        <h1 class="main-title">Перевірка пароля<br>на довжину</h1>
+        <p class="subtitle">МІНІМУМ 12 СИМВОЛІВ • ДОВЖИНА МАЄ ЗНАЧЕННЯ</p>
+        
+        <form action="/check" method="post" class="check-form">
+            <input type="password" name="password" placeholder="Введіть пароль..." required>
+            <button type="submit" class="ghost-btn">ПЕРЕВІРИТИ</button>
+        </form>
+    </main>
+</body>
+</html>
