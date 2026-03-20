@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація - PASSWORD LAB</title>
+    <link rel="stylesheet" href="/static/style.css?v=2">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo"><a href="/" style="color:white; text-decoration:none;">PASSWORD LAB</a></div>
+        <div class="nav-right">
+            <span class="nav-links">Victoriia Roslav | KN-732 | NTU "KhPI" | Lab work №2</span>
+        </div>
+    </nav>
+    
+    <main class="hero">
+        <div class="result-box">
+            <h2 style="margin-top: 0; font-size: 2rem;">Реєстрація</h2>
+            
+            {% if error %}
+                <p class="error-text">{{ error }}</p>
+            {% endif %}
+            
+            <form action="/register" method="post" class="check-form" style="margin-top: 30px;">
+                <input type="text" name="username" placeholder="Придумайте логін..." required>
+                <input type="password" name="password" placeholder="Придумайте пароль..." required>
+                <button type="submit" class="ghost-btn">СТВОРИТИ АКАУНТ</button>
+                <a href="/" class="ghost-btn" style="text-align: center; text-decoration: none; font-size: 0.9rem; padding: 10px;">⬅ ПОВЕРНУТИСЯ НА ГОЛОВНУ</a>
+            </form>
+            
+            <p class="info-text" style="margin-top: 25px;">
+                Вже є акаунт? <a href="/login" style="color: #ffffff; text-decoration: underline;">Увійти</a>
+            </p>
+        </div>
+    </main>
+</body>
+</html>

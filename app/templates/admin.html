@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін-панель - PASSWORD LAB</title>
+    <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo">PASSWORD LAB</></div>
+        <div class="nav-right">
+            <span class="nav-links">Панель керування користувачами</span>
+            <div class="auth-menu">
+                <span class="welcome-text">Адмін: <b>{{ user.username }}</b></span>
+                <a href="/" class="auth-link">На головну</a>
+                <a href="/logout" class="auth-link logout-link">Вихід</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero admin-hero">
+        <div class="admin-container">
+            <div class="result-box admin-box">
+                <h2 class="admin-title">Користувачі системи</h2>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Логін</th>
+                                <th>Роль</th>
+                                <th>Дія</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for u in users_list %}
+                            <tr>
+                                <td>{{ u.id }}</td>
+                                <td><span class="user-name">{{ u.username }}</span></td>
+                                <td>
+                                    <span class="role-badge {% if u.role == 'admin' %}role-admin{% else %}role-user{% endif %}">
+                                        {{ u.role }}
+                                    </span>
+                                </td>
+                                <td>
+                                    {% if u.id != user.id %}
+                                        <a href="/admin/delete/user/{{ u.id }}" class="btn-delete" onclick="return confirm('Видалити користувача?')">Видалити</a>
+                                    {% else %}
+                                        <span class="self-label">(Ви)</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="result-box admin-box">
+                <h2 class="admin-title">База паролів</h2>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Власник</th>
+                                <th>Пароль (Raw)</th>
+                                <th>Дія</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in passwords_list %}
+                            <tr>
+                                <td>
+                                    {% set owner = users_list | selectattr("id", "equalto", p.user_id) | first %}
+                                    <span class="owner-name">{{ owner.username if owner else p.user_id }}</span>
+                                </td>
+                                <td class="raw-pass">{{ p.password_text }}</td>
+                                <td>
+                                    <a href="/admin/delete/password/{{ p.id }}" class="btn-delete" onclick="return confirm('Видалити пароль?')">Видалити</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
