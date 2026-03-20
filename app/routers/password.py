@@ -26,7 +26,6 @@ async def check_password(
     user: models.User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    # Захист! Якщо користувач не увійшов, повертаємо його назад
     if not user:
         return templates.TemplateResponse(
             "index.html", 
@@ -53,11 +52,10 @@ async def check_password(
     if not has_digit: tips.append("Додайте хоча б одну цифру (0-9)")
     if not has_special: tips.append("Додайте спецсимвол (наприклад: @, _, $, %)")
 
-    # НОВЕ: Зберігаємо пароль ТІЛЬКИ якщо він надійний
     if is_secure:
         new_password_record = models.PasswordItem(
             password_text=password,
-            user_id=user.id # Прив'язуємо пароль до поточного користувача
+            user_id=user.id 
         )
         db.add(new_password_record)
         db.commit()

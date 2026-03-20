@@ -32,17 +32,16 @@ def init_db():
             
             db.add(admin)
             db.add(user1)
-            # Зберігаємо їх першими, щоб база видала їм ID (вони потрібні для таблиці паролів)
+
             db.commit() 
             
-            # НОВЕ: 2. Створюємо тестовий пароль у другій таблиці і прив'язуємо його до user1
             test_password = models.PasswordItem(
                 password_text="MySecret_2026!", 
-                user_id=user1.id  # Вказуємо, що це пароль юзера user1
+                user_id=user1.id 
             )
             
             db.add(test_password)
-            db.commit() # Зберігаємо пароль у базу
+            db.commit()
             
             print("Базу даних створено. Додано користувачів та тестовий пароль у таблицю passwords.")
     finally:
